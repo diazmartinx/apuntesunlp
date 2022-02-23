@@ -10,7 +10,7 @@ def index(request):
 
 def materia(request,cod):
     """Hace un query de data.csv segun el CODIGO de la materia"""
-    df = pd.read_csv('apuntes/data.csv') 
+    df = pd.read_csv('data.csv') 
     dfquery = df.loc[(df['codigo']==cod)]
     dfquery.reset_index(drop=True, inplace=True)
     print(dfquery)
@@ -29,6 +29,6 @@ def actualizar(request):
     url = 'https://docs.google.com/spreadsheets/d/1chkvChMO_c_oeWhb9SipwtBIomF-Gdt3ymHzQy6yRp8/gviz/tq?tqx=out:csv&gid=0'
     r = requests.get(url).text
     df = pd.read_csv(StringIO(r))
-    df.to_csv('apuntes/data.csv', index=False)
+    df.to_csv('data.csv', index=False)
     print(df)
     return render(request,'actualizar.html')
