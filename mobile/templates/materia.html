@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head>
+    
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href=" {% static 'style.css' %} ">
+        <link rel="stylesheet" href=" {% static 'materias.css' %} ">
+        <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+        <title>{{titulo}}</title>
+        
+    </head>
+<body>
+
+    <nav id="nav" style="max-width: fit-content;">
+        <span id="menu-btn">
+            <i class="fa-solid fa-bars" style="color: rgb(250,105,0); font-size: 35px;"></i>
+        </span>
+    </nav>
+    <div id="menu">
+        <span id="closeBtn">
+            <i class="fa-solid fa-xmark" style="color: rgb(250,105,0); height: 35px;"></i>
+        </span>
+        <div style="margin-top: 15px;">
+            <a href="/#second"><h3><i class="fa-solid fa-arrow-left"></i> VOLVER A MATERIAS</i></h3></a>
+        </div>
+            
+
+        <h3>{{datos.nombre_materia.0}}</h3>
+
+        <div class="menu-content">
+            <h3>🧯 GUIAS</h3>
+            <div class="pdf-content">
+                {% for index,cell in datos.iterrows %}
+                    {% if cell.tipo == 'guia' %}
+                        <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
+                    {% endif %}
+                {% endfor %}
+            </div>     
+        </div>
+
+        <div class="menu-content">
+            <h3>🔥 EXAMENES</h3>
+            <div class="pdf-content">
+                {% for index,cell in datos.iterrows %}
+                    {% if cell.tipo == 'examen' %}
+                        <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
+                    {% endif %}
+                {% endfor %}
+            </div> 
+        </div>
+
+        <div class="menu-content">
+            <h3>💸 RESUMENES</h3>
+            <div class="pdf-content">
+                {% for index,cell in datos.iterrows %}
+                    {% if cell.tipo == 'resumen' %}
+                        <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
+                    {% endif %}
+                {% endfor %}
+            </div> 
+        </div>
+        
+    </div>
+ 
+    <div id="pdf-embed">
+        
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+
+    <script>
+
+        //Popea el menu al principio asi el usuario elige que quiere ver primero
+        menu.classList.add('showSidebar')
+        navmenu.classList.add('novisible')
+        closeMenuBtn.classList.add('novisible')
+
+        const embed = document.getElementById('pdf-embed')
+
+        function showPdf(url) {
+
+            var sheetid = url.substring(32,65)
+            var src = "https://drive.google.com/file/d/"+sheetid+"/preview"
+            var full_link = '<iframe src='+src+' width="100%" height="100%" allow="autoplay"></iframe>'
+
+            embed.innerHTML = full_link
+            menu.classList.remove('showSidebar')
+            navmenu.classList.remove('novisible')
+            closeMenuBtn.classList.remove('novisible')
+        }
+
+    </script>
+</body>
+</html>

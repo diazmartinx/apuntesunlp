@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    }
+
+nav{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    width: fit-content;
+    background-color: rgb(0,0,0,0.5);
+    text-align: end;
+    z-index: 10;
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.novisible {
+    visibility: hidden !important;
+}
+
+#menu {
+    position: fixed;
+    background-color: rgb(0,0,0,0.8);
+    height: 100vh;
+    width: 100%;
+    transform: translateX(100%);
+    transition: all 0.3s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    max-width: 500px;
+    right: 0;
+}
+
+#menu ul {
+    color: rgb(250,105,0);
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    height: fit-content;
+    list-style-type: none;
+    font-size: larger;
+    padding: 0 0;
+}
+
+#menu li {
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s linear;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+#closeBtn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px 25px;
+}
+
+.showSidebar {
+    transform: translateX(0) !important;
+}
+
+#first {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(250,105,0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: larger;
+}
+
+#first img {
+    width: 50%;
+    max-width: 300px;
+}
+
+#first p {
+    text-align: center;
+    font-weight: bold;
+}
+
+#second {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(224,224,224);
+    color: rgb(250,105,0);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
+
+h4 {
+    margin: 10px 0px;
+}
+
+.cabecera {
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    border-bottom: 1px solid rgb(250,105,0);
+}
+
+.titulo-materia {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.semestre {
+    width: 75%;
+    text-align: center;
+}
+
+.materias {
+    color: black;
+    font-weight: bold;
+}
+
+.materias div{
+    padding: 5px;
+}
+
+#third {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(64,64,64);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(250,105,0);
+    position: relative;
+    text-align: center;
+}
+
+.text-container {
+    font-size: larger;
+}
+

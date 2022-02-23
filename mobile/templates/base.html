@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {% static 'style.css' %} ">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <title>{{titulo}}</title>
+</head>
+<body>
+
+    <nav id="nav">
+        <span id="menu-btn">
+            <i class="fa-solid fa-bars" style="color: rgb(250,105,0); font-size: 35px;"></i>
+        </span>
+    </nav>
+    <div id="menu">
+        <span id="closeBtn">
+            <i class="fa-solid fa-xmark" style="color: rgb(250,105,0); font-size: 35px;"></i>
+        </span>
+        <ul id="menuUl">
+            <a href="#second"><li>MATERIAS</li></a>
+            <a href="#third"><li>CONTRIBUIR     </li></a>
+            <li>CONTACTO</li>
+        </ul>
+    </div>
+
+    <div id="first">
+        
+        <img id="logo_unlp" src="{% static 'images/logo_unlp.png' %}" alt="logo_unlp">
+        <h2>APUNTES UNLP</h2>
+        <p>REFERENCIA PARA ESTUDIANTES DE INFORMATICA 👨‍🎓💻</p>
+        <br>
+        <a href="#second"><i class="fa-solid fa-arrow-down" style="font-size:xx-large;"></i></a>
+        
+    </div>
+
+    <div id="second">
+        <div class="cabecera">
+            <h2>Materias</h2>
+        </div>
+        
+        <div class="semestre">
+            <div class="titulo-materia"><h3>Ingreso</h3></div>
+            <div class="materias">
+                <div><a href=" {% url 'materia' 'CNM' %} ">MATEMATICA 0</a></div>
+                <div><a href=" {% url 'materia' 'CNC' %} ">CONCEPTOS DE ORGANIZACION DE COMPUTADORAS</a></div>
+                <div><a href=" {% url 'materia' 'CNE' %} ">EXPRESION DE PROBLEMAS Y ALGORITMOS</a></div>
+            </div>
+        </div>
+
+        <div class="semestre">
+            <div class="titulo-materia"><h3>1er Semestre</h3></div>
+            <div class="materias">
+                <div><a href=" {% url 'materia' 'SI106' %} ">CONCEPTOS DE ALGORITMOS, DATOS Y PROGRAMAS</a></div>
+                <div><a href=" {% url 'materia' 'SI104' %} ">ORGANIZACION DE COMPUTADORAS</a></div>
+                <div><a href=" {% url 'materia' 'SI101' %} ">MATEMATICA 1</a></div>
+            </div>
+        </div>
+        <div class="semestre">
+            <div class="titulo-materia"><h3>2do Semestre</h3></div>
+            <div class="materias">
+                <div><a href=" {% url 'materia' 'SI107' %} ">TALLER DE PROGRAMACION</a></div>
+                <div><a href=" {% url 'materia' 'SI105' %} ">ARQUITECTURA DE COMPUTADORAS</a></div>
+                <div><a href=" {% url 'materia' 'SI102' %} ">MATEMATICA 2</a></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="third">
+        <div class="cabecera">
+            <h2>Contribuir</h2>
+        </div>
+        <div class="text-container">
+        <p>
+            <b>ApuntesUNLP</b> es un proyecto de codigo abierto con el fin de ayudar a los estudiantes de la Facultad de Informática.
+        </p>
+        <p>
+            Si tenes guias, exámenes, resumenes o lo que creas que pueda servir podes enviarlo a <b>asda@gmail.com</b>
+        </p>
+        <p>
+            Si sabes programar podes contribuir en el proyecto en <a href="#"><b>github </b><i class="fa-brands fa-github"></i></a>
+        </p>
+        </div>
+    </div> 
+    
+    <script src="{% static 'script.js' %}"></script> 
+    
+</body>
+</html>
