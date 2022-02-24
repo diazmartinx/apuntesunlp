@@ -5,23 +5,8 @@ import requests
 from io import StringIO
 
 def index(request):
-    context = {"titulo":"Apuntes UNLP"}
+    context = {"titulo":"Apuntes UNLP 🚀"}
     return render(request, 'base.html', context)
-
-def materia(request,cod):
-    """Hace un query de data.csv segun el CODIGO de la materia"""
-    df = pd.read_csv('data.csv') 
-    dfquery = df.loc[(df['codigo']==cod)]
-    dfquery.reset_index(drop=True, inplace=True)
-    print(dfquery)
-
-    if not dfquery.empty:
-        titulo = dfquery["nombre_materia"][0]
-    else:
-        titulo = 'Apuntes UNLP'
-
-    context = {"titulo":titulo, "datos":dfquery}
-    return render(request, 'materia.html', context)
 
 def actualizar(request):
     """Basicamente esto cachea la informacion en data.csv para evitar excesivos llamados a la api de google
@@ -32,3 +17,28 @@ def actualizar(request):
     df.to_csv('data.csv', index=False)
     print(df)
     return render(request,'actualizar.html')
+
+def materia(request,cod):
+    """Hace un query de data.csv segun el CODIGO de la materia"""
+
+    nombre_materia = request.GET.get('materia')
+    df = pd.read_csv('data.csv') 
+
+    dfquery = df.loc[(df['codigo']==cod)]
+    dfguia = dfquery.loc[(dfquery['tipo']=='guia')]
+    dfexamen = dfquery.loc[(dfquery['tipo']=='examen')]
+    dfresumen = dfquery.loc[(dfquery['tipo']=='resumen')]
+    #dfquery.reset_index(drop=True, inplace=True)
+
+    print(dfquery)
+
+    context = { "datos":dfquery, 
+                "nombre_materia":nombre_materia,
+                "guia":dfguia, 
+                "examen":dfexamen, 
+                "resumen":dfresumen
+                }
+
+    return render(request, 'materia.html', context)
+
+

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href=" {% static 'style.css' %} ">
         <link rel="stylesheet" href=" {% static 'materias.css' %} ">
         <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-        <title>{{titulo}}</title>
+        <title>{{nombre_materia}} - ApuntesUNLP</title>
         
     </head>
 <body>
@@ -29,19 +29,20 @@
         </div>
             
 
-        <h3>{{datos.nombre_materia.0}}</h3>
+        <h3>{{nombre_materia}}</h3>
 
+        {% if not guia.empty %}
         <div class="menu-content">
             <h3>🧯 GUIAS</h3>
             <div class="pdf-content">
-                {% for index,cell in datos.iterrows %}
-                    {% if cell.tipo == 'guia' %}
-                        <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
-                    {% endif %}
+                {% for index,cell in guia.iterrows %}
+                    <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
                 {% endfor %}
             </div>     
         </div>
+        {% endif %}
 
+        {% if not examen.empty %}
         <div class="menu-content">
             <h3>🔥 EXAMENES</h3>
             <div class="pdf-content">
@@ -52,22 +53,28 @@
                 {% endfor %}
             </div> 
         </div>
-
+        {% endif %}
+        {% if not resumen.empty %}
         <div class="menu-content">
             <h3>💸 RESUMENES</h3>
             <div class="pdf-content">
-                {% for index,cell in datos.iterrows %}
-                    {% if cell.tipo == 'resumen' %}
-                        <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
-                    {% endif %}
+                {% for index,cell in resumen.iterrows %}
+                    <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
                 {% endfor %}
             </div> 
         </div>
+        {% endif %}
+
+        {% if resumen.empty and guia.empty and examen.empty %}
+        <div class="menu-content" style="text-align: center;">
+            <h3>No hay nada aquí 😥</h3>
+        </div>
+        {% endif %}
         
     </div>
  
     <div id="pdf-embed">
-        
+        <iframe src="https://drive.google.com/embeddedfolderview?id=1_QeImKsj-9NVHBlSp2TkjQ6XuC6rpM4t#list" width="100%" height="500" frameborder="0"></iframe>
     </div>
 
     <script src="{% static 'script.js' %}"></script>
