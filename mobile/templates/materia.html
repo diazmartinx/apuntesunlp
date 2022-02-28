@@ -28,15 +28,15 @@
             <a href="/#second"><h3><i class="fa-solid fa-arrow-left"></i> VOLVER A MATERIAS</i></h3></a>
         </div>
             
-
-        <h3>{{nombre_materia}}</h3>
+        <div class="contiene-titulo"><h3>{{nombre_materia}}</h3></div>
+        
 
         {% if not guia.empty %}
         <div class="menu-content">
             <h3>🧯 GUIAS</h3>
             <div class="pdf-content">
                 {% for index,cell in guia.iterrows %}
-                    <button onclick="showPdf('{{cell.drive_link}}')">{{cell.nombre_link}}</button>
+                    <button onclick="showPdf('{{cell.drive_link}}','{{cell.nombre_link}}')">{{cell.nombre_link}}</button>
                 {% endfor %}
             </div>     
         </div>
@@ -97,6 +97,15 @@
             menu.classList.remove('showSidebar')
             navmenu.classList.remove('novisible')
             closeMenuBtn.classList.remove('novisible')
+
+            var pdfButton = document.getElementsByClassName('button-active')
+
+            for (var i = 0; i < pdfButton.length; i++) {
+                pdfButton[i].classList.remove('button-active')
+            }
+
+            event.target.classList.add('button-active')
+
         }
 
     </script>

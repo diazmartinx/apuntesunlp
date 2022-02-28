@@ -6,6 +6,10 @@ html,body {
     border-bottom: 1px solid rgb(250,105,0);
 }
 
+#nav{
+    margin-top: 65px;
+}
+
 .menu-content {
     color: rgb(250,105,0);
     width: 80%;
@@ -14,6 +18,11 @@ html,body {
 
 h3 {
     color: rgb(250,105,0);
+}
+
+.contiene-titulo{
+    padding: 0px 20px;
+    text-align: center;
 }
 
 #menu {
@@ -29,6 +38,22 @@ h3 {
     height: 100%;
 }
 
-.flip-list-view .flip-entry-last-modified {
-    display: none !important;
+.pdf-content button {
+    font-size: medium;
+    background-color: rgb(24 24, 24);
+    border: 1px solid rgba(250,105,0);
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
 }
+
+.pdf-content button:hover {
+    background-color: rgba(250,105,0);
+}
+
+.button-active {
+    background-color: rgb(250,105,0,0.5);
+    text-decoration: line-through;
+}
+
